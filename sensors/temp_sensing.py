@@ -2,7 +2,7 @@ from DHT11 import dht11
 import RPi.GPIO as GPIO
 import time
 import datetime
-from alert import send_temp_gmail_alert
+from alert import send_gmail_alert
 
 data_pin=14
 
@@ -35,7 +35,7 @@ def main():
                 elapsed_time = current_time - last_email_time
                 if elapsed_time > datetime.timedelta(hours=1) or first_update:
                     print("GMAIL ALERT SENT")
-                    send_temp_gmail_alert(temp_fehrenheit, current_time)
+                    send_gmail_alert(temp_fehrenheit, current_time)
                     first_update = False
                     last_email_time = current_time
 
