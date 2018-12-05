@@ -8,6 +8,7 @@ data_pin=14
 
 
 def main():
+    print("Start temperature sensor.")
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
 
@@ -16,6 +17,7 @@ def main():
 
     last_email_time = datetime.datetime.now()
     first_update = True
+
 
     while True:
         result = instance.read()

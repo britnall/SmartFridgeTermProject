@@ -1,3 +1,6 @@
+## Refrigerator System
+To run both sensor modules at the same time, run refrigerator_system.py
+
 ## Temperature Sensor
 For the temperature sensor, the python code used to read the data from the DHT11 is from here:
 https://github.com/szazo/DHT11_Python

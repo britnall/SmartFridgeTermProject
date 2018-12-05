@@ -1,4 +1,3 @@
-#!/user/bin/env python3
 import RPi.GPIO as GPIO
 import time
 import datetime
@@ -9,8 +8,10 @@ light_sensor = 26
 
 
 def main():
+    print("Start light sensor.")
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(light_sensor, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
 
     while True:
         input_state = GPIO.input(light_sensor)
