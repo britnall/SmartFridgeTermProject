@@ -40,7 +40,7 @@ def send_temp_gmail_alert(temp, time):
     body = MIMEText(html, 'html')
     msg.attach(body)
 
-    print("send email")
+    print("Send email")
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
     server.login(sender_email, password)
@@ -80,14 +80,9 @@ def send_pic_gmail_alert(image_data, image_name, time):
     image = MIMEImage(image_data, name=os.path.basename(image_name))
     msg.attach(image)
 
-    print("send email")
-    s = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    s.ehlo()
-    s.login(sender_email, password)
-    s.sendmail(sender_email, sendto_email, msg.as_string())
-    s.close()
-
-
-if __name__ == '__main__':
-    import datetime
-    send_temp_gmail_alert(98, datetime.datetime.now())
+    print("Send email")
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.ehlo()
+    server.login(sender_email, password)
+    server.sendmail(sender_email, sendto_email, msg.as_string())
+    server.close()

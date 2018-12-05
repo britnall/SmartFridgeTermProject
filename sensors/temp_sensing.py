@@ -20,17 +20,16 @@ def main():
     while True:
         result = instance.read()
 
-        print("Temperature: %d C" % result.temperature)
-        print("Humidity: %d %%" % result.humidity)
-
         if result.is_valid():
             current_time = datetime.datetime.now()
-            print("Last valid input: " + str(current_time))
-
             temp_fehrenheit = (float(result.temperature) * (9.0/5.0)) + 32.0
-            # FDA regulation at or below 40 degrees is unsafe for refrigeration
-            if not (temp_fehrenheit <= 40.0 and temp_fehrenheit > 0.0):
 
+            print("Last valid input: " + str(current_time))
+            print("Temperature: %d F" % temp_fehrenheit)
+            print("Humidity: %d %%" % result.humidity)
+
+            # FDA regulation - above 40 degrees is unsafe for refrigeration
+            if not (temp_fehrenheit <= 40.0 and temp_fehrenheit > 0.0):
                 # Only send email alert once every hour
                 elapsed_time = current_time - last_email_time
                 if elapsed_time > datetime.timedelta(hours=1) or first_update:
